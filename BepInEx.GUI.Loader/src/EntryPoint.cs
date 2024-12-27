@@ -150,7 +150,7 @@ internal static class EntryPoint
         {
             if (logListener is DiskLogListener diskLogListener)
             {
-                return diskLogListener.FileFullPath;
+                return ((FileStream)((StreamWriter)(diskLogListener.LogWriter)).BaseStream).Name;
             }
         }
 
