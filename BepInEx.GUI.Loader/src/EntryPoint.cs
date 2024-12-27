@@ -14,8 +14,12 @@ namespace BepInEx.GUI.Loader;
 
 internal static class EntryPoint
 {
+#if NETSTANDARD2_0
     public static IEnumerable<string> TargetDLLs { get; } = Array.Empty<string>();
-
+#endif
+#if NET45
+    public static IEnumerable<string> TargetDLLs { get; } = new string[0];
+#endif
     public static void Patch(AssemblyDefinition _) { }
 
     public static void Initialize()
